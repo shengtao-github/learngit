@@ -1,1 +1,28 @@
-This is file1.
+sudo apt-get install git
+git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+
+git init
+git add readme.txt
+git commit -m "wrote a readme file"
+
+git status
+git diff readme.txt
+
+git log
+git log --pretty=oneline
+git reset --hard HEAD^
+git reset --hard 1094a
+git reflog			//查看命令历史
+
+git diff HEAD -- readme.txt
+
+git checkout -- readme.txt	//还原工作区
+git reset HEAD readme.txt	//还原暂存区
+
+git rm test.txt
+
+git remote add origin git@github.com:shengtao-hub/learngit.git
+git push -u origin master	//加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+git push origin master		//此后再推送，就可以使用该命令
+
