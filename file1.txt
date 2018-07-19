@@ -47,10 +47,11 @@ git log --graph --pretty=oneline --abbrev-commit
 git merge --no-ff -m "merge with no-ff" dev		//不用fastforward模式merge
 
 ////Bug分支
-
-
-
-
+git stash						//保存工作现场
+git stash list					//查看保存的现场
+git stash pop					//恢复现场的同时，删除stash内容，等同于下面两个命令
+git stash apply stash@{0}		//恢复现场
+git stash drop					//删除stash内容
 
 
 
