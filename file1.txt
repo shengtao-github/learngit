@@ -54,12 +54,12 @@ git stash apply stash@{0}		//恢复现场	<可指定现场>
 git stash drop					//删除stash内容	<可指定现场>
 
 ////Feature分支
+git branch -D feature-vulcan	//如果一个新分支commit了，但是没有merge过，-d是删不掉的，只能使用-D
 
-
-
-
-
-
+////多人协作
+git remote						//查看远程库的信息
+git remote -v					//查看远程库的信息(详细)
+git push origin dev
 
 
 
