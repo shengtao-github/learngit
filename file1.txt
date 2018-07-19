@@ -41,9 +41,9 @@ git merge dev				//合并dev到当前branch
 git branch -d dev			//删除branch
 
 ////解决冲突
+git log --graph --pretty=oneline --abbrev-commit
 
-
-
+////分支管理策略
 
 
 
