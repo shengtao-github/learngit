@@ -44,7 +44,9 @@ git branch -d dev			//删除branch
 git log --graph --pretty=oneline --abbrev-commit
 
 ////分支管理策略
+git merge --no-ff -m "merge with no-ff" dev		//不用fastforward模式merge
 
+////Bug分支
 
 
 
