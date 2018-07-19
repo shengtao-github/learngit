@@ -22,8 +22,41 @@ git reset HEAD readme.txt	//还原暂存区
 
 git rm test.txt
 
+//远程仓库
 git remote add origin https://github.com/shengtao-github/learngit.git
 git push -u origin master	//加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
 git push origin master		//此后再推送，就可以使用该命令
 
 git clone https://github.com/shengtao-github/gitskills.git
+
+//分支
+git checkout -b dev			//创建并切换
+git branch
+git checkout dev			//切换到已有branch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
