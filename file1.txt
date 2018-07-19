@@ -30,12 +30,17 @@ git push origin master		//此后再推送，就可以使用该命令
 git clone https://github.com/shengtao-github/gitskills.git
 
 //分支
-git checkout -b dev			//创建并切换
-git branch
+////创建与合并分支
+git checkout -b dev			//创建并切换branch，相当于下面两个命令
+git branch dev				//创建名为dev的branch
 git checkout dev			//切换到已有branch
 
+git branch					//查看分支
 
+git merge dev				//合并dev到当前branch
+git branch -d dev			//删除branch
 
+////解决冲突
 
 
 
