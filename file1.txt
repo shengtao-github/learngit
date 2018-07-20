@@ -23,7 +23,7 @@ git reset HEAD readme.txt	//还原暂存区
 git rm test.txt
 
 //远程仓库
-git remote add origin https://github.com/shengtao-github/learngit.git
+git remote add origin https://github.com/shengtao-github/learngit.git		//建立远程关联
 git push -u origin master	//加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
 git push origin master		//此后再推送，就可以使用该命令
 
@@ -69,3 +69,63 @@ git branch --set-upstream-to=origin/dev dev		//指定本地dev分支与远程ori
 git rebase					//git push失败->git pull->git log发现有分叉->git rebase->git log发现分叉消失
 
 //标签管理tag
+////创建标签
+git tag v1.0				//新建标签，默认HEAD
+git tag						//查看标签
+git log --pretty=oneline --abbrev-commit
+git tag v0.9 f52c633		//用上面命令查看log后，选择其中一个版本创建标签
+
+git show v0.9				//查看标签信息
+
+git tag -a v0.1 -m "version 0.1 released" 1094adb	//创建带有说明的标签，用-a指定标签名，-m指定说明文字
+
+////操作标签
+git tag -d v0.1				//删除本地标签
+git push origin v1.0		//推送v1.0版本标签
+git push origin --tags		//推送所有标签
+//////删除远程标签
+git tag -d v0.9						//先删除本地标签
+git push origin :refs/tags/v0.9		//再删除远程标签
+
+
+//如果git remote add orgin失败(当前origin已存在)，则使用下记命令解决
+git remote -v			//先查看origin，发现指向github
+git remote mv origin	//删除origin
+git remote add origin	//设置新的origin
+//一个本地库可以关联多个远程库，只要将上述origin改为具体远程名即可，例如：
+git remote add github https://.../xx.git
+git push github master
+
+//自定义git
+git config --global color.ui true
+
+//忽略特殊文件 .gitignore
+git add -f App.class		//想添加被.gitignore忽略的文件，需要参数-f
+git check-ignore -v App.class		//检查.gitignore文件
+
+//配置别名
+git config --global alias.st status		//以后想git status，就可以输入git st代替
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.br branch
+git config --global alias.unstage 'reset HEAD'
+git config --global alias.last 'log -1'
+
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+//搭建git服务器
+1)sudo apt-get install git			//安装git
+2)sudo adduser git					//创建一个git用户，用来运行git服务
+3)收集所有需要登录的用户的公钥，把所有公钥导入到/home/git/.ssh/authorized_keys文件里，一行一个。		//创建证书登录
+4)sudo git init --bare sample.git	//初始化Git仓库
+  sudo chown -R git:git sample.git	//把owner改为git
+5)编辑/etc/passwd文件：				//禁用shell登录
+	git:x:1001:1001:,,,:/home/git:/bin/bash		改为			git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+6)git clone git@server:/srv/sample.git		//克隆远程仓库
+
+
+
+
+
+
+
